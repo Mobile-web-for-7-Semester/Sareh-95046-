@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator()
 
 import Home from './Screen/Home'
 import Detail from './Screen/Detail'
-
+import Favorite from './Screen/Favorite'
 
 export default function App() {
   return (
@@ -33,6 +33,22 @@ export default function App() {
           tabBarIcon: ({color, size})=>(
             <MaterialCommunityIcons 
               name="home" 
+              color={color} 
+              size={size}
+            />
+          )
+            
+          }
+        }
+      />
+      <Tab.Screen 
+        name="Favorite"
+        component ={FavoriteStack}
+        options={{
+          tabBarLabel: "Favorite",
+          tabBarIcon: ({color, size})=>(
+            <MaterialCommunityIcons 
+              name="heart" 
               color={color} 
               size={size}
             />
@@ -65,6 +81,29 @@ function HomeStack(){
         name="Detail"
         component ={Detail}
       />
+    </Stack.Navigator>
+
+
+  
+  
+  )
+}
+function FavoriteStack(){
+  return(
+    <Stack.Navigator
+      initialRouteName="Favorite"
+      screenOptions={{
+      headerStyle:{backgroundColor: "#841548"},
+      headerTintColor: "#fff",
+      headerTitleStyle:{fontWeight: "bold"}
+    }}>
+
+      <Stack.Screen
+        name="Favorite"
+        component={Favorite}
+        options={{title: "Favorite Page"}}
+      />
+      
     </Stack.Navigator>
 
 
